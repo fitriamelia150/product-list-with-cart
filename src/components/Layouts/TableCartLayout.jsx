@@ -1,28 +1,59 @@
-import { useState } from "react"
+import { forwardRef, useEffect, useState } from "react"
+import { useSelector } from "react-redux"
 import Button from "../Elements/Button/Button"
 
-const TableCartLayout = (props) => {
+const TableCartLayout = forwardRef((props, ref) => {
     const { children } = props
+    const confirmOrderRef = ref
+
+    const cart = useSelector((state) => state.cart.data)
+
     const [totalItem, setTotalItem] = useState(0)
+    const [totalPrice, setTotalPrice] = useState(0)
+
+    useEffect(() => {
+        if(cart.length > 0){
+            const totalQty = cart.reduce((acc, item) => {
+                return acc + item.quantity
+            }, 0)
+
+            setTotalItem(totalQty)
+
+            const sumPrice = cart.reduce((acc, item) => {
+                return acc + item.price * item.quantity
+            }, 0)
+
+            setTotalPrice(sumPrice)
+        }
+    }, [cart])
+
+    const showConfirmOrder = () => {
+        confirmOrderRef.current.classList.remove("hidden")
+    }
 
     return(
-        <div className="bg-white px-5 py-10 rounded-md">
-            <h1 className="text-2xl font-bold text-red-500">Your Cart (0)</h1>
-            {children}
+            <div className="bg-white px-5 py-10 rounded-md">
+                <h1 className="text-2xl font-bold text-red-500">Your Cart ({totalItem})</h1>
 
-            <div className="flex justify-between py-5">
-                <p>Order Total</p>
-                <p className="text-2xl font-semibold">${totalItem}</p>
+                {children}
+
+                {cart.length > 0 &&
+                    <>
+                        <div className="flex justify-between py-5">
+                            <p>Order Total</p>
+                            <p className="text-2xl font-semibold">${totalPrice}</p>
+                        </div>
+
+                        <div className="flex items-center justify-center bg-rose-50 px-5 py-3 rounded-md mb-5">
+                            <img src="/images/icon-carbon-neutral.svg" alt="" />
+                            <p className="text-sm">This is a <span className="font-semibold">carbon-neutral</span> delivery</p>
+                        </div>
+
+                        <Button label="Confirm Order" onClick={showConfirmOrder}/>
+                    </>
+                }
             </div>
-
-            <div className="flex items-center justify-center bg-rose-50 px-5 py-3 rounded-md mb-5">
-                <img src="/images/icon-carbon-neutral.svg" alt="" />
-                <p className="text-sm">This is a <span className="font-semibold">carbon-neutral</span> delivery</p>
-            </div>
-
-            <Button label="Confirm Order"/>
-        </div>
     )
-}
+})
 
 export default TableCartLayout
