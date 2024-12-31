@@ -28,12 +28,15 @@ const cartSlice = createSlice({
                 (item) => item.id === action.payload.id
             )
 
-            console.log(action.payload.id)
-
-
             if (itemCart && itemCart.quantity > 0) {
                 itemCart.quantity --
             }
+
+            if (itemCart && itemCart.quantity === 0) {
+                state.data = state.data.filter((item) => item.id !== action.payload.id)
+            }
+
+
         },
 
         deleteFromCart: (state, action) => {

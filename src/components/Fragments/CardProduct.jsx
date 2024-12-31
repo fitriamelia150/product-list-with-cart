@@ -21,12 +21,18 @@ const CardProduct = (props) => {
                     
                 }
 
-                <img src={image.mobile} alt={category} className="rounded-md "/>
+                <img 
+                    src={image.mobile}
+                    srcSet={`${image.mobile} 480w, ${image.desktop} 1044w`}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    alt={category} 
+                    className="rounded-md "
+                />
             </div>
 
             <div className="">
-                <h1 className="text-rose-300 text-sm font-semibold">{category}</h1>
-                <h2 className="font-bold text-rose-900 text-lg">{name}</h2>
+                <h1 className="text-rose-300 text-sm font-semibold md:text-xs">{category}</h1>
+                <h2 className="font-bold text-rose-900 text-lg md:text-sm">{name}</h2>
                 <h3 className="font-bold text-red-600 text-lg">${price.toLocaleString("id-ID", {styles: 'currency', currency: 'USD'})}</h3>
             </div>
 

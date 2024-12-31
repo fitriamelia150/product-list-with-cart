@@ -22,11 +22,11 @@ const ProductsPage = () => {
 
     return(
         <>
-            <div className="px-5 py-10 flex flex-col gap-10 md:flex-wrap md:flex-row">
-                <div className="">
+            <div className="px-5 py-10 flex flex-col gap-10 md:flex-wrap md:flex-row md:px-20 md:py-20">
+                <div className="md:w-2/3">
                     <h1 className="text-2xl font-bold text-rose-950 mb-10">Desserts</h1>
 
-                    <div className="flex flex-col gap-10 md:flex-row md:flex-wrap">
+                    <div className="flex flex-col gap-10 md:gap-5 md:flex-row md:flex-wrap">
                         {
                             products.map((product) => {
                                 return <CardProduct key={product.id} id={product.id} image={product.image} category={product.category} name={product.name} price={product.price}/>
@@ -39,7 +39,7 @@ const ProductsPage = () => {
                 <TableCartLayout ref={popUpConfirmOrder}>
                     {cart.length > 0 &&
                         cart.map((cartItem) => {
-                            return <TableCart key={cartItem.id} id={cartItem.id} name={cartItem.name} quantity={cartItem.quantity} price={cartItem.price} ref={popUpConfirmOrder}/>
+                            return <TableCart key={cartItem.id} id={cartItem.id} name={cartItem.name} quantity={cartItem.quantity} price={cartItem.price}/>
                         })
                     }
 

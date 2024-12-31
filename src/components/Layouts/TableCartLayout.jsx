@@ -12,7 +12,7 @@ const TableCartLayout = forwardRef((props, ref) => {
     const [totalPrice, setTotalPrice] = useState(0)
 
     useEffect(() => {
-        if(cart.length > 0){
+        if(cart.length >= 0){
             const totalQty = cart.reduce((acc, item) => {
                 return acc + item.quantity
             }, 0)
