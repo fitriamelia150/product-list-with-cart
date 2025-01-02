@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useImperativeHandle, useRef, useState } from "react"
 import { useSelector } from "react-redux"
 
 import { getDataProducts } from "../services/product.services"
@@ -8,7 +8,6 @@ import TableCartLayout from "../components/Layouts/TableCartLayout"
 import TableCart from "../components/Fragments/TableCart"
 import TableCartEmpty from "../components/Fragments/TableCartEmpty"
 import CardConfirmOrder from "../components/Fragments/CardConfirmOrder"
-// import CardConfirmOrder from "../components/Fragments/CardConfirmOrder"
 
 const ProductsPage = () => {
     const [products, setProducts] = useState([])
@@ -18,15 +17,21 @@ const ProductsPage = () => {
         setProducts(getDataProducts)
     },[])
 
-    const popUpConfirmOrder = useRef(null)
+    const productMainRef = useRef(null)
+    const popUpConfirmOrderRef = useRef(null)
+
+    const combinedRefs = useRef({
+        productMainRef,
+        popUpConfirmOrderRef,
+    });
 
     return(
         <>
-            <div className="px-5 py-10 flex flex-col gap-10 md:flex-wrap md:flex-row md:px-20 md:py-20">
-                <div className="md:w-2/3">
-                    <h1 className="text-2xl font-bold text-rose-950 mb-10">Desserts</h1>
+            <div ref={productMainRef} className="px-5 py-10 flex flex-col gap-10 md:flex-wrap md:flex-row md:px-20 md:py-20">
+                <div className="lg:w-2/3">
+                    <h1 className="text-4xl font-bold text-rose-950 mb-10">Desserts</h1>
 
-                    <div className="flex flex-col gap-10 md:gap-5 md:flex-row md:flex-wrap">
+                    <div className="flex flex-col items-center justify-center w-full gap-10 md:gap-5 md:flex-row md:flex-wrap md:justify-normal">
                         {
                             products.map((product) => {
                                 return <CardProduct key={product.id} id={product.id} image={product.image} category={product.category} name={product.name} price={product.price}/>
@@ -36,7 +41,7 @@ const ProductsPage = () => {
 
                 </div>
 
-                <TableCartLayout ref={popUpConfirmOrder}>
+                <TableCartLayout ref={combinedRefs}>
                     {cart.length > 0 &&
                         cart.map((cartItem) => {
                             return <TableCart key={cartItem.id} id={cartItem.id} name={cartItem.name} quantity={cartItem.quantity} price={cartItem.price}/>
@@ -51,10 +56,12 @@ const ProductsPage = () => {
             </div>
             
             {/* POPUP CONFIRM ORDER */}
-            <div className="hidden" ref={popUpConfirmOrder}>
-                <div className="bg-black opacity-30 min-h-screen absolute top-0 w-full z-50">backdrop</div>
-                <div className="absolute bottom-0 w-full z-50">
-                    <CardConfirmOrder/>
+            <div className="hidden" ref={popUpConfirmOrderRef}>
+                <div className="flex items-center justify-center">
+                    {/* <div className="bg-black opacity-30 min-h-screen absolute top-0 w-full z-50"></div> */}
+                    <div className="absolute bottom-0 z-50 md:w-[500px] bg-black bg-opacity-50 min-h-screen min-w-full flex items-center justify-center">
+                        <CardConfirmOrder/>
+                    </div>
                 </div>
             </div>
 

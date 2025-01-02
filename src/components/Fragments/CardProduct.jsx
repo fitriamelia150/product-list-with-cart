@@ -10,7 +10,7 @@ const CardProduct = (props) => {
     const isInCart = cart.some((cartItem) => cartItem.id === id)
 
     return (
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-10 w-fit md:w-56">
             <div className="flex flex-col justify-center items-center relative">
 
                 {isInCart ? 
@@ -21,13 +21,11 @@ const CardProduct = (props) => {
                     
                 }
 
-                <img 
-                    src={image.mobile}
-                    srcSet={`${image.mobile} 480w, ${image.desktop} 1044w`}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    alt={category} 
-                    className="rounded-md "
-                />
+                <picture>
+                    <source srcSet={image.desktop} media="(min-width: 1024px)"/>
+                    <source srcSet={image.tablet} media="(min-width: 640px)"/>
+                    <img src={image.mobile} className="rounded-lg"/>
+                </picture>
             </div>
 
             <div className="">

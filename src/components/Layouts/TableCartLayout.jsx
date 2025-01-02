@@ -1,10 +1,10 @@
-import { forwardRef, useEffect, useState } from "react"
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react"
 import { useSelector } from "react-redux"
 import Button from "../Elements/Button/Button"
 
 const TableCartLayout = forwardRef((props, ref) => {
     const { children } = props
-    const confirmOrderRef = ref
+    const refs = ref
 
     const cart = useSelector((state) => state.cart.data)
 
@@ -28,11 +28,12 @@ const TableCartLayout = forwardRef((props, ref) => {
     }, [cart])
 
     const showConfirmOrder = () => {
-        confirmOrderRef.current.classList.remove("hidden")
+        refs.current.popUpConfirmOrderRef.current.classList.remove("hidden")
+        refs.current.productMainRef.current.classList.add("fixed")
     }
 
     return(
-            <div className="bg-white px-5 py-10 rounded-md">
+            <div className="bg-white px-5 py-10 rounded-md h-fit w-60 lg:w-80">
                 <h1 className="text-2xl font-bold text-red-500">Your Cart ({totalItem})</h1>
 
                 {children}

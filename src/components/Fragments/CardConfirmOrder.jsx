@@ -18,7 +18,7 @@ const CardConfirmOrder = () => {
     }, [cart])
 
     return (
-        <div className="bg-white min-h-[90vh] w-full py-10 px-7 flex flex-col gap-5 rounded-tl-2xl rounded-tr-2xl">
+        <div className="bg-white min-h-[90vh] w-full py-10 px-7 flex flex-col gap-5 rounded-tl-2xl rounded-tr-2xl md:rounded-2xl md:min-h-fit md:w-[50%]">
             <img src="/images/icon-order-confirmed.svg" alt="" className="w-10"/>
 
             <div className="">
