@@ -58,7 +58,7 @@ const ProductsPage = () => {
             {/* POPUP CONFIRM ORDER */}
             <div className="hidden" ref={popUpConfirmOrderRef}>
                 <div className="flex items-center justify-center">
-                    <div className="absolute bottom-0 z-50 md:w-[500px] bg-black bg-opacity-50 min-h-screen min-w-full flex md:items-center pt-52 justify-center">
+                    <div className="absolute bottom-0 z-50 md:w-[500px] bg-black bg-opacity-50 min-h-screen min-w-full flex md:items-center pt-52 justify-center md:pt-0">
                         <CardConfirmOrder ref={combinedRefs}/>
                     </div>
                 </div>
