@@ -27,7 +27,7 @@ const ProductsPage = () => {
 
     return(
         <>
-            <div ref={productMainRef} className="px-5 py-10 flex flex-col justify-between gap-10 md:flex-wrap md:flex-row md:px-20 md:py-20 md:gap-2">
+            <div ref={productMainRef} className="px-5 py-10 flex flex-col justify-between gap-10 md:flex-wrap md:flex-row md:px-20 md:py-20 md:gap-2 xl:px-80">
                 <div className="lg:w-[60%]">
                     <h1 className="text-4xl font-bold text-rose-950 mb-10">Desserts</h1>
 
