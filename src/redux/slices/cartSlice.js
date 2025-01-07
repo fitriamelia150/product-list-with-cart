@@ -40,9 +40,15 @@ const cartSlice = createSlice({
         },
 
         deleteFromCart: (state, action) => {
-            console.log(action.payload.id)
+            console.log(action.payload)
 
-            const newState = state.data.filter((item) => item.id !== action.payload.id) 
+            let newState = state.data
+            
+            if(action.payload === undefined){//delete all
+                newState = []
+            }else{//delete item
+                newState = state.data.filter((item) => item.id !== action.payload.id) 
+            }
 
             state.data = newState
         }

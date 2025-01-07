@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react"
+import { forwardRef, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import Button from "../Elements/Button/Button"
 
@@ -33,7 +33,7 @@ const TableCartLayout = forwardRef((props, ref) => {
     }
 
     return(
-            <div className="bg-white px-5 py-10 rounded-md h-fit w-60 lg:w-80">
+            <div className="bg-white px-5 py-10 rounded-md h-fit w-full lg:w-80">
                 <h1 className="text-2xl font-bold text-red-500">Your Cart ({totalItem})</h1>
 
                 {children}

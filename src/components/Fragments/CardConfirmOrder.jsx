@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
+import { forwardRef, useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { deleteFromCart } from "../../redux/slices/cartSlice"
 import Button from "../Elements/Button/Button"
 
-const CardConfirmOrder = () => {
+const CardConfirmOrder = forwardRef((props, ref) => {
     const [totalPrice, setTotalPrice] = useState(0)
     const cart = useSelector((state) => state.cart.data)
+    const dispatch = useDispatch()
+    const refs = ref
 
     useEffect(() => {
         if(cart.length > 0){
@@ -17,8 +20,15 @@ const CardConfirmOrder = () => {
         }
     }, [cart])
 
+    const startNewOrder = () => {
+        dispatch(deleteFromCart())
+
+        refs.current.popUpConfirmOrderRef.current.classList.add("hidden")
+        refs.current.productMainRef.current.classList.remove("fixed")
+    }
+
     return (
-        <div className="bg-white min-h-[90vh] w-full py-10 px-7 flex flex-col gap-5 rounded-tl-2xl rounded-tr-2xl md:rounded-2xl md:min-h-fit md:w-[50%]">
+        <div className="bg-white min-h-[90vh] w-full py-10 px-7 flex flex-col gap-5 rounded-tl-2xl rounded-tr-2xl md:rounded-2xl md:min-h-fit md:w-[40%]">
             <img src="/images/icon-order-confirmed.svg" alt="" className="w-10"/>
 
             <div className="">
@@ -27,7 +37,7 @@ const CardConfirmOrder = () => {
             </div>
 
             <div className="">
-                <div className=" bg-rose-100 p-5 rounded-lg ">
+                <div className=" bg-rose-100 p-5 rounded-lg h-64 md:h-44 overflow-auto">
 
                     {cart.length > 0 &&
                         cart.map((cartItem) => {
@@ -60,9 +70,9 @@ const CardConfirmOrder = () => {
                 </div>
             </div>
 
-            <Button label="Start New Order"/>
+            <Button label="Start New Order" onClick={() => startNewOrder()}/>
         </div>
     )
-}
+})
 
 export default CardConfirmOrder

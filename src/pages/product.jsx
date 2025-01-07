@@ -1,4 +1,4 @@
-import { useEffect, useImperativeHandle, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux"
 
 import { getDataProducts } from "../services/product.services"
@@ -27,8 +27,8 @@ const ProductsPage = () => {
 
     return(
         <>
-            <div ref={productMainRef} className="px-5 py-10 flex flex-col gap-10 md:flex-wrap md:flex-row md:px-20 md:py-20">
-                <div className="lg:w-2/3">
+            <div ref={productMainRef} className="px-5 py-10 flex flex-col justify-between gap-10 md:flex-wrap md:flex-row md:px-20 md:py-20 md:gap-2">
+                <div className="lg:w-[60%]">
                     <h1 className="text-4xl font-bold text-rose-950 mb-10">Desserts</h1>
 
                     <div className="flex flex-col items-center justify-center w-full gap-10 md:gap-5 md:flex-row md:flex-wrap md:justify-normal">
@@ -58,9 +58,8 @@ const ProductsPage = () => {
             {/* POPUP CONFIRM ORDER */}
             <div className="hidden" ref={popUpConfirmOrderRef}>
                 <div className="flex items-center justify-center">
-                    {/* <div className="bg-black opacity-30 min-h-screen absolute top-0 w-full z-50"></div> */}
-                    <div className="absolute bottom-0 z-50 md:w-[500px] bg-black bg-opacity-50 min-h-screen min-w-full flex items-center justify-center">
-                        <CardConfirmOrder/>
+                    <div className="absolute bottom-0 z-50 md:w-[500px] bg-black bg-opacity-50 min-h-screen min-w-full flex md:items-center pt-52 justify-center">
+                        <CardConfirmOrder ref={combinedRefs}/>
                     </div>
                 </div>
             </div>

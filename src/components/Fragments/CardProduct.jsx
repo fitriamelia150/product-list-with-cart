@@ -8,6 +8,7 @@ const CardProduct = (props) => {
     const cart = useSelector((state) => state.cart.data)
 
     const isInCart = cart.some((cartItem) => cartItem.id === id)
+    const styleImage = isInCart ? "rounded-lg border-[3px] border-rose-600" : "rounded-lg"
 
     return (
         <div className="flex flex-col gap-10 w-fit md:w-56">
@@ -17,14 +18,12 @@ const CardProduct = (props) => {
                     (<ButtonAddItem key={id} id={id} name={name} price={price}/>) 
                     : 
                     (<ButtonAddToCart key={id} id={id} name={name} price={price} image={image}/>)
-                    
-                    
                 }
 
                 <picture>
                     <source srcSet={image.desktop} media="(min-width: 1024px)"/>
                     <source srcSet={image.tablet} media="(min-width: 640px)"/>
-                    <img src={image.mobile} className="rounded-lg"/>
+                    <img src={image.mobile} className={styleImage}/>
                 </picture>
             </div>
 
