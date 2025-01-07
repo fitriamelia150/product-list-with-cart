@@ -1,8 +1,7 @@
-# React + Vite
+# Product List with Cart 🛒
+This project is part of the Frontend Mentor challenge. In this mini project, I used:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- React + Vite ⚛️ + ⚡️
+- TailwindCSS 🖤
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I'm really proud of how this turned out, especially since I completed it using new tools I recently learned. 💪 I hope you enjoy it and welcome any feedback or suggestions to improve the code quality. 😊
