@@ -46,7 +46,7 @@ const TableCartLayout = forwardRef((props, ref) => {
                         </div>
 
                         <div className="flex items-center justify-center bg-rose-50 px-5 py-3 rounded-md mb-5">
-                            <img src="/images/icon-carbon-neutral.svg" alt="" />
+                            <img src="/images/icon-carbon-neutral.svg" alt="img-carbon-neutral" />
                             <p className="text-sm">This is a <span className="font-semibold">carbon-neutral</span> delivery</p>
                         </div>
 

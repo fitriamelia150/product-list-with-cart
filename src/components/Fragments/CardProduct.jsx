@@ -23,7 +23,7 @@ const CardProduct = (props) => {
                 <picture>
                     <source srcSet={image.desktop} media="(min-width: 1024px)"/>
                     <source srcSet={image.tablet} media="(min-width: 640px)"/>
-                    <img src={image.mobile} className={styleImage}/>
+                    <img src={image.mobile} className={styleImage} alt="image-product"/>
                 </picture>
             </div>
 

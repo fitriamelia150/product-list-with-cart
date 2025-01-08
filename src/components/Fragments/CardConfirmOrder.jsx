@@ -29,7 +29,7 @@ const CardConfirmOrder = forwardRef((props, ref) => {
 
     return (
         <div className="bg-white min-h-[90vh] w-full py-10 px-7 flex flex-col gap-5 rounded-tl-2xl rounded-tr-2xl md:rounded-2xl md:min-h-fit md:w-[40%]">
-            <img src="/images/icon-order-confirmed.svg" alt="" className="w-10"/>
+            <img src="/images/icon-order-confirmed.svg" alt="icon-order-confirmed" className="w-10"/>
 
             <div className="">
                 <h1 className="text-[2.5rem] leading-10 font-bold mb-3">Order Confirmed</h1>
@@ -46,7 +46,7 @@ const CardConfirmOrder = forwardRef((props, ref) => {
                             return(<div key={cartItem.id} className="flex items-center justify-between border-b-[1px] pb-5 border-rose-200">
 
                                 <div className="flex gap-3 ">
-                                    <img src={cartItem.image.thumbnail} alt="" className="h-14 rounded-md"/>
+                                    <img src={cartItem.image.thumbnail} alt="img-thumbnail" className="h-14 rounded-md"/>
         
                                     <div className="">
                                         <h1 className="font-semibold mb-2">{cartItem.name}</h1>
